@@ -1,0 +1,25 @@
+:root{
+  --bg:#071018;--panel:#0d1822;--panel2:#111f2b;--border:rgba(255,255,255,.13);
+  --text:#f5f7fa;--muted:#b8c3ce;--accent:#f4a340
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+body{display:flex;flex-direction:column}
+.topbar{padding:18px 28px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#0c1721,#102330);border-bottom:1px solid var(--border)}
+.topbar h1{margin:0 0 6px;font-size:30px}.topbar p{margin:0;color:var(--muted);font-size:14px}.badge{padding:9px 13px;border:1px solid var(--border);border-radius:999px;color:var(--accent);font-size:12px;font-weight:700}
+.layout{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:720px}
+.map-shell{position:relative;min-height:720px;overflow:hidden}.side-panel{background:var(--panel);border-left:1px solid var(--border);padding:18px;overflow:auto}
+#map{position:absolute;inset:0}
+.card{position:absolute;background:rgba(13,24,34,.94);border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(10px);box-shadow:0 18px 46px rgba(0,0,0,.38);z-index:5}
+.controls{top:18px;left:18px;width:285px;padding:16px}.county-card{top:18px;right:18px;width:320px;padding:21px}.legend{left:18px;bottom:18px;width:230px;padding:15px}
+.eyebrow{color:var(--accent);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.1px}.grid{display:grid;gap:7px}.grid.six{grid-template-columns:repeat(3,1fr);margin-top:12px}.grid.three{grid-template-columns:repeat(3,1fr);margin-top:8px}
+button{border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:9px 7px;background:#1b2b38;color:#fff;font-weight:700;font-size:12px;cursor:pointer}button:hover{background:#2a4051}.accent{background:#b84a20}
+.range-label{display:flex;justify-content:space-between;margin-top:15px;color:var(--muted);font-size:12px}input[type=range]{width:100%;margin-top:8px;accent-color:var(--accent)}.hint{margin:11px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+.county-card h2{margin:6px 0 18px;font-size:25px}.metric{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-top:1px solid var(--border)}.metric span{color:var(--muted);font-size:13px}.metric strong{text-align:right;font-size:14px}
+.legend h3{margin:0 0 11px;font-size:14px}.legend div{display:flex;align-items:center;gap:9px;margin:7px 0;font-size:13px}.legend i{width:22px;height:12px;border-radius:2px}.lowest{background:#ffffb2}.low{background:#fed976}.moderate{background:#feb24c}.high{background:#fd8d3c}.highest{background:#bd0026}.legend p{color:var(--muted);font-size:11px;line-height:1.4;margin:11px 0 0}
+.panel-section{padding:16px 0;border-bottom:1px solid var(--border)}.panel-section:first-child{padding-top:0}.search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:12px}.search-row input{min-width:0;border:1px solid var(--border);border-radius:8px;background:#0a141c;color:#fff;padding:10px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.summary-grid div{padding:12px;background:var(--panel2);border:1px solid var(--border);border-radius:9px}.summary-grid span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}.summary-grid strong{font-size:15px}
+.top-ten{margin-top:12px}.top-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:12px}.top-row .rank{color:var(--accent);font-weight:800}.top-row .rate{font-weight:800}.small{font-size:11px}.muted{color:var(--muted)}
+footer{padding:10px 22px;display:flex;justify-content:space-between;gap:20px;background:#0c1721;border-top:1px solid var(--border);color:var(--muted);font-size:11px}.maplibregl-popup-content{border-radius:10px;color:#101820;font-size:13px;line-height:1.5}
+@media(max-width:1100px){.layout{grid-template-columns:1fr}.side-panel{border-left:none;border-top:1px solid var(--border)}}
+@media(max-width:760px){.badge{display:none}.map-shell{min-height:850px}.controls{width:210px}.county-card{top:auto;left:10px;right:10px;bottom:10px;width:auto;max-height:36%;overflow:auto}.legend{display:none}}
