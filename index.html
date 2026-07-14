@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ohio Oral Cancer Explorer</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Ohio’s Oral Cancer Landscape</h1>
+      <p>Interactive 3D visualization of county-level oral cavity and pharynx cancer incidence, 2018–2022</p>
+    </div>
+    <div class="badge">R + QGIS + MapLibre</div>
+  </header>
+
+  <main class="layout">
+    <section class="map-shell">
+      <div id="map"></div>
+
+      <section class="controls card">
+        <div class="eyebrow">Camera controls</div>
+        <div class="grid six">
+          <button data-view="top">Top</button>
+          <button data-view="north">North</button>
+          <button data-view="south">South</button>
+          <button data-view="east">East</button>
+          <button data-view="west">West</button>
+          <button data-view="threeD">3D</button>
+        </div>
+
+        <div class="grid three">
+          <button id="start-rotation" class="accent">Auto-rotate</button>
+          <button id="stop-rotation">Pause</button>
+          <button id="reset-view">Reset</button>
+        </div>
+
+        <label class="range-label" for="height-scale">
+          <span>Height scale</span>
+          <strong id="height-value">1.00×</strong>
+        </label>
+        <input id="height-scale" type="range" min="0.25" max="2.5" step="0.05" value="1">
+
+        <p class="hint">Right-click and drag for full 360° rotation. Scroll to zoom. Left-click and drag to pan.</p>
+      </section>
+
+      <aside class="county-card card">
+        <div class="eyebrow">County details</div>
+        <h2 id="county-name">Hover over a county</h2>
+        <div class="metric"><span>Age-adjusted incidence</span><strong id="incidence-rate">—</strong></div>
+        <div class="metric"><span>Ohio rank</span><strong id="ohio-rank">—</strong></div>
+        <div class="metric"><span>Average annual cases</span><strong id="annual-cases">—</strong></div>
+        <div class="metric"><span>95% confidence interval</span><strong id="confidence-interval">—</strong></div>
+        <div class="metric"><span>Community classification</span><strong id="community-type">—</strong></div>
+        <div class="metric"><span>Incidence category</span><strong id="rate-category">—</strong></div>
+      </aside>
+
+      <div class="legend card">
+        <h3>Incidence rate per 100,000</h3>
+        <div><i class="lowest"></i>Lowest</div>
+        <div><i class="low"></i>Low</div>
+        <div><i class="moderate"></i>Moderate</div>
+        <div><i class="high"></i>High</div>
+        <div><i class="highest"></i>Highest</div>
+        <p>Height and color represent the age-adjusted incidence rate. Gray indicates unavailable or suppressed values.</p>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <section class="panel-section">
+        <div class="eyebrow">County search</div>
+        <div class="search-row">
+          <input id="county-search" type="text" placeholder="Type county name">
+          <button id="search-button">Search</button>
+        </div>
+        <p id="search-message" class="small muted"></p>
+      </section>
+
+      <section class="panel-section">
+        <div class="eyebrow">State summary</div>
+        <div class="summary-grid">
+          <div><span>Highest county</span><strong id="highest-county">—</strong></div>
+          <div><span>Highest rate</span><strong id="highest-rate">—</strong></div>
+          <div><span>Median rate</span><strong id="median-rate">—</strong></div>
+          <div><span>Counties shown</span><strong id="county-count">—</strong></div>
+        </div>
+      </section>
+
+      <section class="panel-section">
+        <div class="eyebrow">Top 10 counties</div>
+        <div id="top-ten" class="top-ten"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <span>Data: State Cancer Profiles, Oral Cavity &amp; Pharynx, All Stages, 2018–2022.</span>
+    <span>Extrusion height is visually scaled and does not represent physical elevation.</span>
+  </footer>
+
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
